@@ -1,0 +1,3 @@
+[submodule "projet-webservice"]
+	path = projet-webservice
+	url = https://github.com/JeremyB-EPSI/projet-webservice
