@@ -1,0 +1,16 @@
+version: '2'
+services:
+ client:
+  build: projet-webservice
+  ports:
+   - "4200:4200"
+
+ express:
+  build: express-server
+  ports:
+   - "3000:3000"
+
+ mongodb:
+  image: mongo
+  ports:
+   - "27017:27017"
