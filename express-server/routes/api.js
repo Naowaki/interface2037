@@ -1,60 +1,45 @@
 var express = require('express');
+var redis = require('redis');
+
 var router = express.Router();
+var client = redis.createClient(6379, "192.168.99.100");
 
 
-/* GET api listing. */
-router.get('/', function(req, res) {
+router.get('/', testRacine);
+router.get('/test', test);
+router.get('/questions', getQuestions);
+router.get('/question/:id', getQuestion);
+router.post('/question', createQuestion);
+router.post('/question/:id/response', createResponse);
 
-    res.send('api works');
-});
+module.exports = router;
 
-/**
- * GET pour avoir toutes les questions existantes
- */
-router.get('/questions', function(req, res) {
+// =================================================================================================================
+// Fonction associé au URL
+// =================================================================================================================
+
+function testRacine(req, res) {
+    res.send("api works");
+}
+
+function test (req, res) {
+    res.send('Coucou');
+}
+
+function getQuestions(req, res) {
     res.send("Coucou tu veux voir mes questions");
-});
+}
 
-/**
- * GET pour avoir une question
- */
-router.get('/question/:id', function(req, res) {
-    // console.log(req);
-    // console.log(req.query);
-    // console.log(req.body);
-    // console.log(req.parms);
-
+function getQuestion(req, res) {
     var params = req.params;
     res.send("Coucou tu veux voir ma question n°" + params.id);
-});
+}
 
-/**
- * POST d'une question
- */
-router.post('/question', function(req, res) {
-
+function createQuestion(req, res) {
     res.send("Coucou, tu créé une question");
-});
+}
 
-/**
- * POST d'une réponse à une question
- */
-router.post('/question/:id/response', function(req, res) {
+function createResponse(req, res) {
     var params = req.params;
     res.send("Coucou, tu répond à une question dont l'id est " + params.id);
-});
-
-module.exports = router;
-
-/**
- *  Ajouter une question
- *  Récuperer la ou les qustions
- *  répondre à une quzstion
- */
-
-router.get('/test', function (req, res) {
-    res.send('Coucou');
-});
-
-
-module.exports = router;
+}
