@@ -2,7 +2,7 @@ var express = require('express');
 var redis = require('redis');
 
 var router = express.Router();
-var client = redis.createClient();
+var client = redis.createClient(6379, 'redis_1');
 
 
 router.get('/', testRacine);
@@ -15,7 +15,7 @@ router.post('/question/:id/response', createResponse);
 module.exports = router;
 
 // =================================================================================================================
-// Fonction associé au URL
+// Fonctions associées aux URI
 // =================================================================================================================
 
 function testRacine(req, res) {
@@ -36,7 +36,7 @@ function getQuestion(req, res) {
 }
 
 function createQuestion(req, res) {
-    res.send("Coucou, tu créé une question");
+    res.send("Coucou, tu crées une question");
 }
 
 function createResponse(req, res) {

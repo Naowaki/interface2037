@@ -9,7 +9,7 @@ services:
   build: express-server
   ports:
    - "3000:3000"
-  depends_on:
+  links:
    - redis
 
  redis:
