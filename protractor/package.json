@@ -1,0 +1,14 @@
+{
+  "name": "TestProtractorApp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "protractor protractor.conf.js"
+  },
+  "dependencies": {
+    "jasmine-spec-reporter": "^4.1.1",
+    "protractor": "^5.1.2",
+    "ts-node": "^3.0.6",
+    "typescript": "^2.3.4"
+  }
+}
