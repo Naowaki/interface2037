@@ -32,11 +32,22 @@ function getQuestions(req, res) {
 
 function getQuestion(req, res) {
     var params = req.params;
-    res.send("Coucou tu veux voir ma question n°" + params.id);
+    client.hgetall("question_" + params.id, function (err, reply) {
+        res.send(reply);
+    });
 }
 
 function createQuestion(req, res) {
-    res.send("Coucou, tu crées une question");
+    var count = 0;
+    client.llen("questionsList", function(err, reply) {
+        count = reply;
+        var questionId = "question_" + (count + 1);
+        client.hmset(questionId, "libelle", req.body.question, function (err, reply) {
+            client.rpush("questionsList", questionId, function (err, reply) {
+                res.send(reply.toString());
+            });
+        });
+    });
 }
 
 function createResponse(req, res) {
