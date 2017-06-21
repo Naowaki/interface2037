@@ -13,9 +13,10 @@ services:
    - redis
 
  redis:
-  image: redis
+  build: redis
   ports:
    - "6379:6379"
 
  protractor:
   build: protractor
+
