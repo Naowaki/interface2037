@@ -1,7 +1,3 @@
-// import { ProjetAgilePage } from './app.po';
-// import { browser, element, by } from 'protractor';
-
-
 describe('projet-agile App', function() {
 
   beforeEach(function() {
