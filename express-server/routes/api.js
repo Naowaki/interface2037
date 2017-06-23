@@ -7,7 +7,6 @@ var client = redis.createClient(6379, 'redis_1');
 
 router.get('/', testRacine);
 router.get('/test', test);
-router.get('/questions', getQuestions);
 router.get('/question/:id', getQuestion);
 router.post('/question', createQuestion);
 router.post('/question/:id/response', createResponse);
@@ -24,10 +23,6 @@ function testRacine(req, res) {
 
 function test (req, res) {
     res.send('Coucou');
-}
-
-function getQuestions(req, res) {
-    res.send("Coucou tu veux voir mes questions");
 }
 
 function getQuestion(req, res) {
